@@ -46,11 +46,46 @@ namespace LeetCodePractise
             int num = 4;
             Console.WriteLine(FirstFactorial(num));**/
 
-            //First Reverse
+            /** First Reverse
             string str = "Cold Palmer";
-            Console.WriteLine(FirstReverse(str));
+            Console.WriteLine(FirstReverse(str));**/
+
+            //13. Roman to Integer
+            string s = "III";
+            int value = 0;
+            Dictionary<string, int> romanDict = new Dictionary<string, int>()
+            { {"IV", 4},
+              {"IX", 9},
+              {"XL", 40},
+              {"XC", 90},
+              {"CD", 400},
+              {"CM", 900},
+              {"I", 1},
+              {"V", 5},
+              {"X", 5},
+              {"L", 50},
+              {"C", 100},
+              {"D", 500},
+              {"M", 1000}
+            };
+
+            while (s.Length != 0)
+            {
+                foreach (KeyValuePair<string, int> retrieve in romanDict)
+                {
+                    if (s.Contains(retrieve.Key))
+                    {
+                        value += retrieve.Value;
+                        s = s.Replace(retrieve.Key, string.Empty);
+                    }
+                }
+            }
+
+            Console.WriteLine(value);
 
         }
+
+        //
 
         //Coderbyte First Reverse
         public static string FirstReverse(string str)

@@ -51,7 +51,15 @@ namespace LeetCodePractise
             Console.WriteLine(FirstReverse(str));**/
 
             //13. Roman to Integer
-            string s = "III";
+            string s = "MCMXCIV";
+            Console.WriteLine(prog.RomanToInt(s));
+
+        }
+
+
+        //13. Roman to Integer
+        public int RomanToInt(string s)
+        {
             int value = 0;
             Dictionary<string, int> romanDict = new Dictionary<string, int>()
             { {"IV", 4},
@@ -62,7 +70,7 @@ namespace LeetCodePractise
               {"CM", 900},
               {"I", 1},
               {"V", 5},
-              {"X", 5},
+              {"X", 10},
               {"L", 50},
               {"C", 100},
               {"D", 500},
@@ -75,17 +83,15 @@ namespace LeetCodePractise
                 {
                     if (s.Contains(retrieve.Key))
                     {
+                        int index = s.IndexOf(retrieve.Key);
+                        s = s.Remove(index, retrieve.Key.Length);
+
                         value += retrieve.Value;
-                        s = s.Replace(retrieve.Key, string.Empty);
                     }
                 }
             }
-
-            Console.WriteLine(value);
-
+            return value;
         }
-
-        //
 
         //Coderbyte First Reverse
         public static string FirstReverse(string str)

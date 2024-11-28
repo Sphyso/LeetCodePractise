@@ -50,12 +50,62 @@ namespace LeetCodePractise
             string str = "Cold Palmer";
             Console.WriteLine(FirstReverse(str));**/
 
-            //13. Roman to Integer
+            /**13. Roman to Integer
             string s = "MCMXCIV";
-            Console.WriteLine(prog.RomanToInt(s));
+            Console.WriteLine(prog.RomanToInt(s)); **/
+
+            //14. Longest Common Prefix
+            string[] strs = new[] { "" };
+            Console.WriteLine(prog.LongestCommonPrefix(strs));
+
 
         }
 
+        //14. Longest Common Prefix
+        public string LongestCommonPrefix(string[] strs)
+        {
+            string shortest = strs.OrderBy(word => word.Length).FirstOrDefault();
+            char[] charArray = shortest.ToCharArray();
+            int firstNum = 0;
+            string prefix = "";
+
+            try
+            {
+                if (strs.Length == 1)
+                {
+                    prefix = strs[0].Substring(firstNum, 1);
+                    return prefix;
+                }
+            }
+            catch (Exception)
+            {
+                return prefix;
+               
+            }
+
+            foreach (var item in charArray)
+            {
+                try
+                {
+                    if (strs[0].Substring(firstNum, 1) == strs[1].Substring(firstNum, 1) && strs[0].Substring(firstNum, 1) == strs[2].Substring(firstNum, 1))
+                    {
+                        prefix += item;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                catch (Exception)
+                {
+                    continue;
+                    throw;
+                }
+
+                firstNum += 1;
+            }
+            return prefix;
+        }
 
         //13. Roman to Integer
         public int RomanToInt(string s)

@@ -54,11 +54,66 @@ namespace LeetCodePractise
             string s = "MCMXCIV";
             Console.WriteLine(prog.RomanToInt(s)); **/
 
-            //14. Longest Common Prefix
-            string[] strs = new[] { "" };
-            Console.WriteLine(prog.LongestCommonPrefix(strs));
+            /**14. Longest Common Prefix
+            string[] strs = new[] { "flower", "flow", "flight" };
+            string shortest = strs.OrderBy(word => word.Length).FirstOrDefault();
+            char[] charArray = shortest.ToCharArray();
+            int firstNum = 0;
+            string prefix = "";
+
+            for (int i = 0; i < charArray.Length; i++)
+            {
+                for (int x = 0; x < strs.Length; x++)
+                {
+                    string comLetter = charArray[i].ToString();
+                    if ( comLetter == strs[x].Substring(firstNum, 1))
+                    {
+
+                        if (true)
+                        {
+
+                        }
+
+                        Console.WriteLine("Compare: " +comLetter);
+                        Console.WriteLine("From Ar: " +strs[x]);
+                    }
+                }
+                firstNum += 1;
+            }
 
 
+            // Console.WriteLine(prog.LongestCommonPrefix(strs));**/
+
+            //1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+            string sentence = "i love eating burger";
+            string searchWord = "burg";
+
+
+            Console.WriteLine(prog.IsPrefixOfWord(sentence, searchWord));
+
+        }
+
+        //1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+        public int IsPrefixOfWord(string sentence, string searchWord)
+        {
+            int index = 0;
+
+            string[] sentenceArray = sentence.Split(' ');
+
+            for (int i = 0; i < sentenceArray.Length; i++)
+            {
+                if (sentenceArray[i].StartsWith(searchWord))
+                {
+                    index = (i + 1);
+                    break;
+                }
+                else
+                {
+                    index = -1;
+                }
+            }
+
+            return index;
         }
 
         //14. Longest Common Prefix
